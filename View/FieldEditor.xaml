@@ -1,0 +1,331 @@
+﻿<Page
+    x:Class="AnimeTool.View.FieldEditor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:AnimeTool.Binding"
+    xmlns:vc="using:AnimeTool.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignInstance Type=vm:MainVM}"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <vc:DatetimeConverter
+            x:Key="DatetimeConverter" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="Series AnimeDB ID" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.Series_Anime_DB_ID}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="Series Title" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.Series_Title}" />
+
+        </Grid>
+
+        <Grid
+            Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="Series Type" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.Series_Type}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="Series Episodes" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.Series_Episodes}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My Watched Episodes" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.My_Watched_Episodes}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My Start Date" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.My_Start_Date, Converter={StaticResource DatetimeConverter}}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My Finish Date" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.My_Finish_Date, Converter={StaticResource DatetimeConverter}}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My Score" />
+            <ComboBox
+                Grid.Column="1"
+                ItemsSource="{Binding SelectedAnimeItem.Scores}"
+                SelectedItem="{Binding SelectedAnimeItem.My_Score, Mode=TwoWay}"
+                SelectionChanged="StatsChanged" />
+        </Grid>
+
+        <Grid
+            Grid.Row="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My Status" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.My_Status}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My Rewatching" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.My_Rewatching}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My Rewatching Ep" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.My_Rewatching_Ep}" />
+        </Grid>
+
+        <!-- Advanced Fields -->
+        <Grid
+            Grid.Row="11">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My Tags" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.My_Tags}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My Priority" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.My_Priority}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="13">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My Storage" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.My_Storage}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="14">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My Times Watched" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.My_Times_Watched}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My Rewatch Value" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.My_Rewatch_Value}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My Comments" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.My_Comments}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="17">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My Discuss" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.My_Discuss}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="18">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="My SNS" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.My_SNS}" />
+        </Grid>
+
+        <Grid
+            Grid.Row="19">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Column="0"
+                Text="Update On Import" />
+            <TextBlock
+                Grid.Column="1"
+                Text="{Binding SelectedAnimeItem.Update_On_Import}" />
+        </Grid>
+
+        <Button
+            Grid.Row="20"
+            Content="Reset All"
+            Command="{Binding SelectedAnimeItem.OnRestoreOriginalValuesCommand}" />
+    </Grid>
+</Page>

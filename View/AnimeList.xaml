@@ -1,0 +1,192 @@
+﻿<Page
+    x:Class="AnimeTool.View.AnimeList"
+    Name="AnimeListPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="using:AnimeTool.Binding"
+    xmlns:vc="using:AnimeTool.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignInstance Type=vm:MainVM}"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <vc:InverseBooleanConverter
+            x:Key="InverseBooleanConverter" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <RadioButton
+                Grid.Column="0"
+                GroupName="StatusGroup"
+                Content="All"
+                IsChecked="{Binding IsAllRadioChecked, Mode=TwoWay}" />
+            <RadioButton
+                Grid.Column="1"
+                GroupName="StatusGroup"
+                Content="Watching"
+                IsChecked="{Binding IsWatchingRadioChecked, Mode=TwoWay}" />
+            <RadioButton
+                Grid.Column="2"
+                GroupName="StatusGroup"
+                Content="Completed"
+                IsChecked="{Binding IsCompletedRadioChecked, Mode=TwoWay}" />
+            <RadioButton
+                Grid.Column="3"
+                GroupName="StatusGroup"
+                Content="On-Hold"
+                IsChecked="{Binding IsOnHoldRadioChecked, Mode=TwoWay}" />
+            <RadioButton
+                Grid.Column="4"
+                GroupName="StatusGroup"
+                Content="Dropped"
+                IsChecked="{Binding IsDroppedRadioChecked, Mode=TwoWay}" />
+            <RadioButton
+                Grid.Column="5"
+                GroupName="StatusGroup"
+                Content="Plan To Watch"
+                IsChecked="{Binding IsPlanToWatchRadioChecked, Mode=TwoWay}" />
+        </Grid>
+        <Grid
+            Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <!-- Sort/Filter -->
+            <ComboBox
+                Grid.Column="0"
+                ItemsSource="{Binding SortOptionsList}"
+                SelectedItem="{Binding SelectedSortOption, Mode=TwoWay}" />
+            <ComboBox
+                Grid.Column="1"
+                ItemsSource="{Binding FilterOptionsList}"
+                SelectedItem="{Binding SelectedFilterOption, Mode=TwoWay}" />
+
+            <!-- List functions -->
+            <Button
+                Grid.Column="2"
+                Content="Set all scores to 0"
+                Command="{Binding OnZeroScoresCommand}" />
+            <Button
+                Grid.Column="3"
+                Content="Restore original values"
+                Command="{Binding RestoreOriginalCommand}" />
+            <Button
+                Grid.Column="4"
+                Content="Unhide all items"
+                Command="{Binding UnhideAllCommand}" />
+        </Grid>
+
+        <ListBox
+            Grid.Row="3"
+            Background="#00000000"
+            ItemsSource="{Binding DisplayAnimeList}"
+            SelectedItem="{Binding SelectedAnimeItem, Mode=TwoWay}">
+            <ListBox.ItemContainerStyle>
+                <Style
+                    TargetType="ListBoxItem">
+                    <Setter
+                        Property="HorizontalContentAlignment"
+                        Value="Stretch" />
+                    <Setter
+                        Property="VerticalContentAlignment"
+                        Value="Stretch" />
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate
+                    x:DataType="vm:AnimeItem">
+                    <Grid
+                        Height="50">
+                        <Grid.Resources>
+                            <Style
+                                TargetType="Button">
+                                <Setter
+                                    Property="HorizontalAlignment"
+                                    Value="Stretch" />
+                                <Setter
+                                    Property="VerticalAlignment"
+                                    Value="Stretch" />
+                                <Setter
+                                    Property="FontSize"
+                                    Value="24" />
+                                <Setter
+                                    Property="Padding"
+                                    Value="0" />
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                Width="8*" />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid
+                            Grid.Column="0">
+                            <TextBlock
+                                FontSize="18"
+                                VerticalAlignment="Center"
+                                Text="{Binding Series_Title}" />
+                        </Grid>
+                        <Grid
+                            Grid.Column="1">
+                            <TextBlock
+                                FontSize="18"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Text="{Binding My_Score}" />
+                        </Grid>
+                        <Button
+                            Grid.Column="2"
+                            Content="+"
+                            Command="{Binding ElementName=AnimeListPage, Path=DataContext.OnIncrementCommand}"
+                            CommandParameter="{Binding}" />
+                        <Button
+                            Grid.Column="3"
+                            Content="-"
+                            Command="{Binding ElementName=AnimeListPage, Path=DataContext.OnDecrementCommand}"
+                            CommandParameter="{Binding}" />
+                        <Button
+                            Grid.Column="4"
+                            Command="{Binding ElementName=AnimeListPage, Path=DataContext.OnToggleHiddenCommand}"
+                            CommandParameter="{Binding}">
+                            <Grid>
+                                <Image
+                                    Source="/Assets/hide.png"
+                                    Visibility="{Binding IsHidden, Converter={StaticResource InverseBooleanConverter}}" />
+                                <Image
+                                    Source="/Assets/show.png"
+                                    Visibility="{Binding IsHidden}" />
+                            </Grid>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Page>

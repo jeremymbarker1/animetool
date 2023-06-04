@@ -1,0 +1,264 @@
+﻿<Page
+    x:Class="AnimeTool.View.StatsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:AnimeTool.Binding"
+    xmlns:vc="using:AnimeTool.Converters"
+    d:DataContext="{d:DesignInstance Type=vm:MainVM}"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <vc:FloatPercisionConverter
+            x:Key="FloatPrecisionConverter" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid
+            Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Mean Score" />
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="{Binding UserStats.MeanScore}" />
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="Watching" />
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="{Binding UserStats.TotalWatching}" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="Completed" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="{Binding UserStats.TotalCompleted}" />
+            <TextBlock
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="On-Hold" />
+            <TextBlock
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="{Binding UserStats.TotalOnHold}" />
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="0"
+                Text="Dropped" />
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="1"
+                Text="{Binding UserStats.TotalDropped}" />
+            <TextBlock
+                Grid.Row="5"
+                Grid.Column="0"
+                Text="Plan To Watch" />
+            <TextBlock
+                Grid.Row="5"
+                Grid.Column="1"
+                Text="{Binding UserStats.TotalPlanToWatch}" />
+            <TextBlock
+                Grid.Row="6"
+                Grid.Column="0"
+                Text="Total Entries" />
+            <TextBlock
+                Grid.Row="6"
+                Grid.Column="1"
+                Text="{Binding UserStats.TotalEntries}" />
+            <TextBlock
+                Grid.Row="7"
+                Grid.Column="0"
+                Text="Total Scored" />
+            <TextBlock
+                Grid.Row="7"
+                Grid.Column="1"
+                Text="{Binding UserStats.TotalScored}" />
+        </Grid>
+        <Grid
+            Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <!-- Score -->
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Text="Score" />
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="0"
+                Text="10" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="0"
+                Text="9" />
+            <TextBlock
+                Grid.Row="3"
+                Grid.Column="0"
+                Text="8" />
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="0"
+                Text="7" />
+            <TextBlock
+                Grid.Row="5"
+                Grid.Column="0"
+                Text="6" />
+            <TextBlock
+                Grid.Row="6"
+                Grid.Column="0"
+                Text="5" />
+            <TextBlock
+                Grid.Row="7"
+                Grid.Column="0"
+                Text="4" />
+            <TextBlock
+                Grid.Row="8"
+                Grid.Column="0"
+                Text="3" />
+            <TextBlock
+                Grid.Row="9"
+                Grid.Column="0"
+                Text="2" />
+            <TextBlock
+                Grid.Row="10"
+                Grid.Column="0"
+                Text="1" />
+
+            <!-- Count -->
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="#" />
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="{Binding UserStats.ActualCounts[9]}" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="{Binding UserStats.ActualCounts[8]}" />
+            <TextBlock
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="{Binding UserStats.ActualCounts[7]}" />
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="1"
+                Text="{Binding UserStats.ActualCounts[6]}" />
+            <TextBlock
+                Grid.Row="5"
+                Grid.Column="1"
+                Text="{Binding UserStats.ActualCounts[5]}" />
+            <TextBlock
+                Grid.Row="6"
+                Grid.Column="1"
+                Text="{Binding UserStats.ActualCounts[4]}" />
+            <TextBlock
+                Grid.Row="7"
+                Grid.Column="1"
+                Text="{Binding UserStats.ActualCounts[3]}" />
+            <TextBlock
+                Grid.Row="8"
+                Grid.Column="1"
+                Text="{Binding UserStats.ActualCounts[2]}" />
+            <TextBlock
+                Grid.Row="9"
+                Grid.Column="1"
+                Text="{Binding UserStats.ActualCounts[1]}" />
+            <TextBlock
+                Grid.Row="10"
+                Grid.Column="1"
+                Text="{Binding UserStats.ActualCounts[0]}" />
+
+            <!-- Percentage -->
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="2"
+                Text="%" />
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="2"
+                Text="{Binding UserStats.ActualPercents[9], Converter={StaticResource FloatPrecisionConverter}, ConverterParameter=1}" />
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="2"
+                Text="{Binding UserStats.ActualPercents[8], Converter={StaticResource FloatPrecisionConverter}, ConverterParameter=1}" />
+            <TextBlock
+                Grid.Row="3"
+                Grid.Column="2"
+                Text="{Binding UserStats.ActualPercents[7], Converter={StaticResource FloatPrecisionConverter}, ConverterParameter=1}" />
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="2"
+                Text="{Binding UserStats.ActualPercents[6], Converter={StaticResource FloatPrecisionConverter}, ConverterParameter=1}" />
+            <TextBlock
+                Grid.Row="5"
+                Grid.Column="2"
+                Text="{Binding UserStats.ActualPercents[5], Converter={StaticResource FloatPrecisionConverter}, ConverterParameter=1}" />
+            <TextBlock
+                Grid.Row="6"
+                Grid.Column="2"
+                Text="{Binding UserStats.ActualPercents[4], Converter={StaticResource FloatPrecisionConverter}, ConverterParameter=1}" />
+            <TextBlock
+                Grid.Row="7"
+                Grid.Column="2"
+                Text="{Binding UserStats.ActualPercents[3], Converter={StaticResource FloatPrecisionConverter}, ConverterParameter=1}" />
+            <TextBlock
+                Grid.Row="8"
+                Grid.Column="2"
+                Text="{Binding UserStats.ActualPercents[2], Converter={StaticResource FloatPrecisionConverter}, ConverterParameter=1}" />
+            <TextBlock
+                Grid.Row="9"
+                Grid.Column="2"
+                Text="{Binding UserStats.ActualPercents[1], Converter={StaticResource FloatPrecisionConverter}, ConverterParameter=1}" />
+            <TextBlock
+                Grid.Row="10"
+                Grid.Column="2"
+                Text="{Binding UserStats.ActualPercents[0], Converter={StaticResource FloatPrecisionConverter}, ConverterParameter=1}" />
+            <Grid />
+        </Grid>
+    </Grid>
+</Page>
